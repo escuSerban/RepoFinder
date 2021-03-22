@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="repo_icons_size">12dp</dimen>
+    <dimen name="repo_language_tag_padding">8dp</dimen>
+    <dimen name="image_view_size">56dp</dimen>
+    <dimen name="image_view_avatar_size">48dp</dimen>
+</resources>

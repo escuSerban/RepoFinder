@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.example.repofinder.UtilsKt" />
+
+        <variable
+            name="repository"
+            type="com.example.repofinder.network.Repository" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/repo_avatar"
+            android:layout_width="@dimen/image_view_size"
+            android:layout_height="@dimen/image_view_size"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="18dp"
+            android:contentDescription="@string/owner_image"
+            app:imgUrl="@{repository.owner.avatarUrl}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/repo_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="32dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@{repository.name}"
+            android:textColor="@color/purple_700"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/repo_avatar"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Searched repository name" />
+
+        <TextView
+            android:id="@+id/repo_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@{repository.description}"
+            android:textColor="@color/gray_37"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/repo_name"
+            app:layout_constraintStart_toStartOf="@id/repo_name"
+            app:layout_constraintTop_toBottomOf="@id/repo_name"
+            tools:text="Repository short description" />
+
+        <ImageView
+            android:id="@+id/repo_issues"
+            android:layout_width="@dimen/repo_icons_size"
+            android:layout_height="@dimen/repo_icons_size"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="@string/repo_issues_description"
+            android:src="@drawable/icon_issue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/repo_name"
+            app:layout_constraintTop_toBottomOf="@id/repo_description" />
+
+        <TextView
+            android:id="@+id/issues_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:text="@string/repo_issues"
+            android:textColor="@color/gray_37"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/repo_issues"
+            app:layout_constraintStart_toEndOf="@id/repo_issues"
+            app:layout_constraintTop_toTopOf="@id/repo_issues" />
+
+        <TextView
+            android:id="@+id/repo_issues_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:text="@{UtilsKt.formatNumber(repository.issues)}"
+            android:textColor="@color/gray_37"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/repo_issues"
+            app:layout_constraintStart_toEndOf="@id/issues_text"
+            app:layout_constraintTop_toTopOf="@id/repo_issues"
+            tools:text="30" />
+
+        <ImageView
+            android:id="@+id/repo_star"
+            android:layout_width="@dimen/repo_icons_size"
+            android:layout_height="@dimen/repo_icons_size"
+            android:layout_marginStart="8dp"
+            android:contentDescription="@string/repo_star_description"
+            android:src="@drawable/icon_star"
+            app:layout_constraintBottom_toBottomOf="@+id/repo_issues"
+            app:layout_constraintStart_toEndOf="@+id/repo_issues_count" />
+
+        <TextView
+            android:id="@+id/star_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:text="@string/repo_star"
+            android:textColor="@color/gray_37"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/repo_issues"
+            app:layout_constraintStart_toEndOf="@id/repo_star"
+            app:layout_constraintTop_toTopOf="@id/repo_issues"
+            app:layout_constraintVertical_bias="0.50" />
+
+        <TextView
+            android:id="@+id/repo_star_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:text="@{UtilsKt.formatNumber(repository.stars)}"
+            android:textColor="@color/gray_37"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/repo_issues"
+            app:layout_constraintStart_toEndOf="@+id/star_text"
+            app:layout_constraintTop_toTopOf="@+id/repo_issues"
+            app:layout_constraintVertical_bias="0.50"
+            tools:text="10" />
+
+        <ImageView
+            android:id="@+id/repo_fork"
+            android:layout_width="@dimen/repo_icons_size"
+            android:layout_height="@dimen/repo_icons_size"
+            android:layout_marginStart="8dp"
+            android:contentDescription="@string/repo_fork_description"
+            android:src="@drawable/icon_fork"
+            app:layout_constraintBottom_toBottomOf="@+id/repo_issues"
+            app:layout_constraintStart_toEndOf="@+id/repo_star_count" />
+
+        <TextView
+            android:id="@+id/fork_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:text="@string/repo_fork"
+            android:textColor="@color/gray_37"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/repo_issues"
+            app:layout_constraintStart_toEndOf="@id/repo_fork"
+            app:layout_constraintTop_toTopOf="@+id/repo_issues"
+            app:layout_constraintVertical_bias="0.50" />
+
+        <TextView
+            android:id="@+id/repo_fork_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:text="@{UtilsKt.formatNumber(repository.forks)}"
+            android:textColor="@color/gray_37"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/repo_issues"
+            app:layout_constraintStart_toEndOf="@+id/fork_text"
+            app:layout_constraintTop_toTopOf="@+id/repo_issues"
+            app:layout_constraintVertical_bias="0.50"
+            tools:text="20" />
+
+        <TextView
+            android:id="@+id/repo_language"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_language"
+            android:paddingStart="@dimen/repo_language_tag_padding"
+            android:paddingEnd="@dimen/repo_language_tag_padding"
+            android:text="@{repository.language}"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:visibility="@{repository.isLanguageValid() ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="@id/repo_star"
+            app:layout_constraintEnd_toEndOf="@+id/repo_name"
+            app:layout_constraintTop_toTopOf="@id/repo_star"
+            tools:text="JavaScript" />
+
+        <View
+            android:id="@+id/repo_divider"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/repo_name"
+            app:layout_constraintStart_toStartOf="@id/repo_avatar" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

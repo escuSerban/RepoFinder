@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Repo Finder</string>
+    <string name="gif_description">GitHub Gif</string>
+    <string name="owner_image">Image with the repository owner</string>
+    <string name="input_hint">Please type a repository name</string>
+    <string name="empty_input">Please type a repository!</string>
+    <string name="repo_issues">issues</string>
+    <string name="repo_issues_description">Issues Icon</string>
+    <string name="repo_star">star</string>
+    <string name="repo_star_description">Stars Icon</string>
+    <string name="repo_fork">fork</string>
+    <string name="repo_fork_description">Forks Icon</string>
+</resources>
